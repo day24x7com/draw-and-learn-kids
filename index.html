@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Draw &amp; Learn! — Graphics for Kids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-emoji">🎨</span>
+    <span class="brand-text">Draw &amp; Learn!</span>
+  </div>
+  <nav class="nav" id="nav">
+    <button class="nav-btn active" data-section="home">🏠 Home</button>
+    <button class="nav-btn" data-section="shapes">🔷 Shapes</button>
+    <button class="nav-btn" data-section="colors">🌈 Colors</button>
+    <button class="nav-btn" data-section="draw">✏️ Draw</button>
+    <button class="nav-btn" data-section="quiz">🎯 Quiz</button>
+  </nav>
+  <button class="sound-toggle" id="soundToggle" title="Toggle sound">🔊</button>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section class="view active" id="view-home">
+    <div class="hero">
+      <h1>Welcome, little artist! 🌟</h1>
+      <p class="subtitle">Learn about shapes, colors and drawing — with fun games and a magic drawing pad.</p>
+      <div class="hero-cards">
+        <button class="big-card card-shapes" data-go="shapes">
+          <span class="card-emoji">🔷</span>
+          <span class="card-title">Shapes</span>
+          <span class="card-desc">Meet the shape friends!</span>
+        </button>
+        <button class="big-card card-colors" data-go="colors">
+          <span class="card-emoji">🌈</span>
+          <span class="card-title">Colors</span>
+          <span class="card-desc">Mix and match colors.</span>
+        </button>
+        <button class="big-card card-draw" data-go="draw">
+          <span class="card-emoji">✏️</span>
+          <span class="card-title">Draw</span>
+          <span class="card-desc">Paint your own picture.</span>
+        </button>
+        <button class="big-card card-quiz" data-go="quiz">
+          <span class="card-emoji">🎯</span>
+          <span class="card-title">Quiz</span>
+          <span class="card-desc">Win shiny stars!</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHAPES -->
+  <section class="view" id="view-shapes">
+    <h2 class="section-title">Meet the Shape Friends 🔷</h2>
+    <p class="section-sub">Tap a shape to hear its name and see it spin!</p>
+    <div class="shape-grid" id="shapeGrid"></div>
+
+    <div class="shape-canvas-wrap">
+      <canvas id="shapeStage" width="720" height="380" aria-label="Shape playground"></canvas>
+      <p class="hint">Watch the shapes bounce around! Tap the canvas to add a new shape 🎉</p>
+    </div>
+  </section>
+
+  <!-- COLORS -->
+  <section class="view" id="view-colors">
+    <h2 class="section-title">The Color Rainbow 🌈</h2>
+    <p class="section-sub">Tap a color to paint the rainbow and hear its name.</p>
+    <div class="rainbow" id="rainbow"></div>
+
+    <div class="mixer">
+      <h3>Color Mixer 🧪</h3>
+      <p class="section-sub">Pick two colors and see what happens when they mix!</p>
+      <div class="mix-row">
+        <div class="mix-pick" id="pickA">
+          <span class="mix-label">Color A</span>
+          <div class="swatch-current" id="swatchA"></div>
+        </div>
+        <span class="mix-plus">+</span>
+        <div class="mix-pick" id="pickB">
+          <span class="mix-label">Color B</span>
+          <div class="swatch-current" id="swatchB"></div>
+        </div>
+        <span class="mix-plus">=</span>
+        <div class="mix-pick">
+          <span class="mix-label">Mixed!</span>
+          <div class="swatch-current big" id="swatchMix"></div>
+        </div>
+      </div>
+      <div class="mix-palette" id="mixPalette"></div>
+    </div>
+  </section>
+
+  <!-- DRAW -->
+  <section class="view" id="view-draw">
+    <h2 class="section-title">Magic Drawing Pad ✏️</h2>
+    <div class="draw-toolbar">
+      <div class="tool-group" id="colorTools"></div>
+      <div class="tool-group">
+        <button class="tool-btn" data-size="4">•</button>
+        <button class="tool-btn" data-size="10">••</button>
+        <button class="tool-btn" data-size="22">●●</button>
+        <button class="tool-btn erase" id="eraserBtn" data-erase="1">🧽 Eraser</button>
+        <button class="tool-btn" id="clearBtn">🗑️ Clear</button>
+        <button class="tool-btn" id="saveBtn">💾 Save</button>
+      </div>
+    </div>
+    <canvas id="drawPad" width="900" height="500" aria-label="Drawing pad"></canvas>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="view" id="view-quiz">
+    <h2 class="section-title">Shape &amp; Color Quiz 🎯</h2>
+    <div class="quiz-card">
+      <div class="quiz-top">
+        <span class="quiz-progress" id="quizProgress">Question 1 of 8</span>
+        <span class="quiz-score" id="quizScore">⭐ 0</span>
+      </div>
+      <div class="quiz-prompt" id="quizPrompt"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <button class="restart-btn hidden" id="quizRestart">Play Again 🔁</button>
+    </div>
+  </section>
+
+</main>
+
+<div class="confetti" id="confetti"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
